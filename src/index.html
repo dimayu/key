@@ -8,6 +8,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 </head>
 
 <body>
@@ -19,14 +24,160 @@
 <!-- Main start -->
 <main class="main">
   <div class="wrapper">
-    <button type="button" class="btn js-modal" data-modal="#modal_1">
-      Заказать звонок
-    </button>
-
-    {% include "./components/tabs/tabs.njk" %}
-    {% include "./components/accordion/accordion.njk" %}
-
-    <button data-tooltip="эта подсказка должна" class="tooltip">Короткая кнопка</button>
+    <div class="product">
+      <div class="product__slider">
+        <div class="swiper mySwiper2">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-1.webp" type="image/webp">
+                <img src="img/slide-1.jpg" alt="test image" width="686" height="878">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-2.webp" type="image/webp">
+                <img src="img/slide-2.jpg" alt="test image" width="686" height="878">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-3.webp" type="image/webp">
+                <img src="img/slide-3.jpg" alt="test image" width="686" height="878">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-4.webp" type="image/webp">
+                <img src="img/slide-4.jpg" alt="test image" width="686" height="878">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-5.webp" type="image/webp">
+                <img src="img/slide-5.jpg" alt="test image" width="686" height="878">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div thumbsSlider="" class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-1.webp" type="image/webp">
+                <img src="img/slide-1.jpg" alt="test image" width="70" height="91">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-2.webp" type="image/webp">
+                <img src="img/slide-2.jpg" alt="test image" width="70" height="91">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-3.webp" type="image/webp">
+                <img src="img/slide-3.jpg" alt="test image" width="70" height="91">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-4.webp" type="image/webp">
+                <img src="img/slide-4.jpg" alt="test image" width="70" height="91">
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="img/slide-5.webp" type="image/webp">
+                <img src="img/slide-5.jpg" alt="test image" width="70" height="91">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product__content">
+        <h1 class="product__content__title">Пижама для девочек</h1>
+        <p class="product__content__art">Арт. 02765/46</p>
+        <div class="product__content__reviews">
+          <span>Отзывы</span>
+          <div class="product__content__reviews__stars">
+            <div class="product__content__reviews__stars__item product__content__reviews__stars__item--active"></div>
+            <div class="product__content__reviews__stars__item product__content__reviews__stars__item--active"></div>
+            <div class="product__content__reviews__stars__item product__content__reviews__stars__item--active"></div>
+            <div class="product__content__reviews__stars__item product__content__reviews__stars__item--active"></div>
+            <div class="product__content__reviews__stars__item"></div>
+          </div>
+          <span class="product__content__reviews__see">14 отзывов</span>
+          <svg class="product__content__reviews__arrow">
+            <use xlink:href="img/sprite/sprite.svg#arrow"></use>
+          </svg>
+        </div>
+        <div class="product__content__prices">
+          <div class="product__content__prices__new">800 ₽</div>
+          <div class="product__content__prices__old">1 500 ₽</div>
+          <svg class="product__content__prices__arrow">
+            <use xlink:href="img/sprite/sprite.svg#arrow"></use>
+          </svg>
+        </div>
+        <div class="product__content__sale">
+          <div class="product__content__sale__item">скидка -47%</div>
+          <div class="product__content__sale__item">акция -20%</div>
+        </div>
+        <fieldset class="product__content__select">
+          <label for="select-size"></label>
+          <select name="pets" id="select-size" class="select">
+            <option value="">Выбрать размер</option>
+            <option value="dog">XXL</option>
+            <option value="cat">XL</option>
+            <option value="hamster">M</option>
+            <option value="parrot">L</option>
+          </select>
+        </fieldset>
+        <a href="#" class="product__content__size-link">Определить размер</a>
+        <div class="product__content__btns">
+          <div class="counter">
+            <input type="button" class="counter__plus counter__btn" value="+">
+            <div class="counter__num">1</div>
+            <input type="button" class="counter__minus counter__btn" value="-" disabled>
+          </div>
+          <button class="btn btn-text">Добавить в корзину</button>
+          <button class="btn">
+            <svg>
+              <use xlink:href="img/sprite/sprite.svg#favorite"></use>
+            </svg>
+          </button>
+        </div>
+        <button class="product__content__link js-modal" data-modal="#modal_1">
+          Купить в 1 клик
+        </button>
+        <ul class="accordion product__content__desc">
+          <li class="accordion__item">
+            <button class="accordion__item__btn" type="button">
+              <svg>
+                <use xlink:href="img/sprite/sprite.svg#desc"></use>
+              </svg>
+              <span>Описание товара</span>
+            </button>
+          </li>
+          <li class="accordion__item">
+            <button class="accordion__item__btn" type="button">
+              <svg>
+                <use xlink:href="img/sprite/sprite.svg#clock"></use>
+              </svg>
+              <span>Доставка и возврат</span>
+            </button>
+          </li>
+          <li class="accordion__item">
+            <button class="accordion__item__btn" type="button">
+              <svg>
+                <use xlink:href="img/sprite/sprite.svg#pay"></use>
+              </svg>
+              <span>Способы оплаты</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </main>
 <!-- Main end -->
@@ -37,5 +188,5 @@
 {% include "./components/footer/footer.njk" %}
 <!-- Footer end -->
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </html>

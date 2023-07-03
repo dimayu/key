@@ -1,7 +1,7 @@
 $columns: 12;
 $atom: (100% / $columns);
 
-$break_lm: 1120px;
+$break_lm: 1520px;
 $break_md: 940px;
 $break_sm: 768px;
 $break_xxs: 330px;
@@ -18,8 +18,8 @@ $offset_md_one_side: ($offset_md / 2);
 $offset_sm_one_side: ($offset_sm / 2);
 $offset_xxs_one_side: ($offset_xxs / 2);
 
-$fields: 48px;
-$fields_lm: 48px;
+$fields: 266px;
+$fields_lm: 50px;
 $fields_md: 36px;
 $fields_sm: 36px;
 $fields_xxs: 20px;
@@ -60,7 +60,7 @@ $fields_xxs: 20px;
 }
 
 @mixin wrapper(){
-    max-width: 1344px;
+    max-width: 1388px;
     margin: 0 auto;
     @include wrapper-full();
 }

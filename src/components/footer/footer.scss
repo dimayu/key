@@ -1,3 +1,101 @@
+@import "../../styles/helpers/smart-grid";
+@import "../../styles/helpers/variables";
+
 .footer {
   flex: 0 0 auto;
+  padding-bottom: 34px;
+  margin-top: 71px;
+
+  @include md-block {
+    margin-top: 44px;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+
+    @include md-block {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  }
+
+  &__list {
+    width: 24%;
+
+    @include md-block {
+      width: 45%;
+    }
+
+    &__item {
+      margin-bottom: 10px;
+
+      &__title {
+        margin-bottom: 20px;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      &__link {
+        color: $black;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__form {
+    position: relative;
+    width: 32%;
+
+    &__title {
+      margin-bottom: 40px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    &__input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 8px;
+      color: $grey;
+      border: none;
+      border-bottom: 1px solid $black;
+    }
+
+    &__reset {
+      position: absolute;
+      top: 70px;
+      right: 0;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        stroke: $grey-1;
+      }
+    }
+
+    @include md-block {
+      width: 100%;
+      margin-top: 58px;
+
+      &__title {
+        margin-bottom: 16px;
+      }
+
+      &__reset {
+        top: 60px;
+      }
+    }
+
+    .btn {
+      width: 150px;
+      margin-top: 40px;
+      margin-left: auto;
+    }
+  }
 }

@@ -10,12 +10,12 @@ body {
   flex-direction: column;
   height: 100%;
   overflow-x: hidden;
-  font-family: Nekst, sans-serif;
-  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
   font-style: normal;
-  line-height: 1;
+  line-height: 1.2;
   color: $black;
-  letter-spacing: -0.02px;
+  letter-spacing: .1px;
   background-color: #fff;
   scroll-behavior: smooth;
 }
@@ -24,49 +24,404 @@ body {
   flex: 1 0 auto;
 }
 
+button {
+  background-color: transparent;
+}
+
 .btn {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Nekst, sans-serif;
+  padding: 8px 0;
   color: #fff;
-  background-color: $yellow;
-  border-radius: 40px;
+  background-color: $black;
+  border: 1px solid $black;
+  transition: color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: #fff;
+    transition: transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: #fff;
+  }
 
   &:hover {
-    background-color: $black;
+    color: $black;
+
+    svg {
+      stroke: $black;
+    }
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &-white {
+    color: $black;
+    background-color: #fff;
+
+    &::before {
+      background-color: $black;
+    }
+
+    &:hover {
+      color: #fff;
+    }
   }
 
   &:disabled {
-    background: rgba(255, 149, 20, .4);
+    background: $grey;
   }
 }
 
-.tooltip__text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 11px 13px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #000;
-  pointer-events: none;
-  background-color: #FFF;
-  border-radius: 6px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+.product {
+  display: flex;
+  gap: 8px;
+  margin-top: 30px;
 
-  &::after {
-    position: absolute;
-    top: 100%;
-    left: 25px;
-    width: 0;
-    height: 0;
-    margin-left: -10px;
-    content: "";
-    border-top: 10px solid #fff;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    transition: all 0.3s ease-in-out;
+  @include md-block {
+    flex-direction: column;
+
+    &__slider {
+      width: 100%;
+    }
+
+    &__content {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+
+  &__slider {
+    position: relative;
+    width: 50%;
+
+    .mySwiper {
+      position: absolute;
+      top: 20px;
+      left: 24px;
+
+      .swiper-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        .swiper-slide {
+          position: relative;
+          width: 70px !important;
+          height: 91px;
+          cursor: pointer;
+
+          &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background-color: #fff;
+            opacity: .3;
+          }
+
+          &-thumb-active {
+            &::after {
+              opacity: 0;
+            }
+          }
+
+          @include sm-block {
+            width: 40px !important;
+            height: 52px;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    width: 50%;
+    margin-top: 20px;
+
+    &__title {
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    &__art {
+      padding-left: 20px;
+      font-size: 12px;
+      color: $grey;
+    }
+
+    &__reviews {
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      margin-top: 18px;
+
+      &__stars {
+        display: flex;
+        margin-right: 4px;
+        margin-left: 12px;
+
+        &__item {
+          width: 12px;
+          height: 12px;
+          background-image: url("../img/sprite/star.svg");
+
+          &--active {
+            background-image: url("../img/sprite/star_fill.svg");
+          }
+        }
+      }
+
+      &__arrow {
+        width: 24px;
+        height: 24px;
+        transform: rotate(-90deg);
+      }
+    }
+
+    &__prices {
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      margin-top: 40px;
+
+      &__new {
+        margin-right: 12px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      &__old {
+        color: $grey;
+        text-decoration: line-through;
+      }
+
+      &__arrow {
+        width: 24px;
+        height: 24px;
+        margin-left: 12px;
+        transform: rotate(-90deg);
+      }
+    }
+
+    &__sale {
+      display: flex;
+      padding-left: 20px;
+      margin-top: 10px;
+
+      &__item {
+        padding: 4px 8px;
+        margin-right: 10px;
+        font-size: 12px;
+        border: 1px solid $black;
+      }
+    }
+
+    &__select {
+      position: relative;
+      width: 315px;
+      padding-left: 20px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+
+      &::after {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: block;
+        width: 24px;
+        height: 24px;
+        content: '';
+        background-image: url("../img/sprite/arrow.svg");
+      }
+
+      .select {
+        width: 100%;
+        padding: 10px 14px;
+        margin: 0;
+        appearance: none;
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid $black;
+        outline: none;
+
+        &::-ms-expand {
+          display: none;
+        }
+      }
+    }
+
+    &__size-link {
+      padding-left: 20px;
+      color: $black;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &__btns {
+      display: flex;
+      padding-left: 20px;
+      margin-top: 44px;
+
+      .counter {
+        display: flex;
+        margin-right: 12px;
+
+        &__btn, &__num {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 46px;
+          height: 44px;
+          background-color: $grey-2;
+          border: none;
+        }
+
+        &__num {
+          width: 50px;
+          border-right: 1px solid $grey-1;
+          border-left: 1px solid $grey-1;
+        }
+
+        &__btn {
+          cursor: pointer;
+
+          &:hover {
+            background-color: $grey;
+          }
+
+          &:disabled {
+            opacity: .5;
+
+            &:hover {
+              background-color: $grey-2;
+            }
+          }
+        }
+      }
+
+      .btn {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+      }
+
+      .btn-text {
+        width: 203px;
+        margin-right: 4px;
+      }
+    }
+
+    &__link {
+      margin-top: 12px;
+      margin-left: 20px;
+      color: $black;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &__desc {
+      padding-top: 22px;
+      margin-top: 30px;
+      border-top: .5px solid $grey-1;
+    }
+
+    @include sm-block {
+      &__title, &__art, &__reviews,
+      &__prices, &__sale, &__select, &__size-link, &__link, &__btns, &__desc {
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      &__select {
+        width: 100%;
+        max-width: 315px;
+      }
+
+      &__btns {
+        flex-wrap: wrap;
+      }
+
+      .counter {
+        width: 100%;
+        margin-bottom: 14px;
+      }
+    }
+  }
+}
+
+.accordion {
+  padding-left: 20px;
+
+  &__item {
+    margin-bottom: 15px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+    }
+
+    &__btn {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+
+      span {
+        text-decoration: underline;
+      }
+
+      &:focus {
+        outline:none;
+      }
+
+      &:focus, &:hover {
+        span {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &__content {
+      height: 0;
+      margin-top: -2px;
+      overflow: hidden;
+      transition: height .4s ease-in-out;
+
+      &.active {
+        height: auto;
+      }
+    }
   }
 }

@@ -1,6 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const nunjucks = require('nunjucks');
+const Nunjucks = require('nunjucks');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
@@ -43,11 +43,11 @@ module.exports = {
           options: {
             preprocessor: async (content, loaderContext) => {
               let result;
-              let env = nunjucks.configure(path.resolve(__dirname, "src/"), { autoescape: true });
+              let env = Nunjucks.configure(path.resolve(__dirname, "src/"), { autoescape: false });
         
               try {
                 result = content;
-                result = nunjucks.renderString(content);
+                result = Nunjucks.renderString(content);
               } catch (error) {
                 await loaderContext.emitError(error);
           
@@ -136,10 +136,6 @@ module.exports = {
       template: path.resolve(__dirname, '/index.html'),
       filename: "index.html",
     }),
-    new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, '/home.html'),
-      filename: "home.html",
-    }),
   
     new StylelintPlugin(),
   
@@ -155,8 +151,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
     }),
-  
-    new ImageminWebpWebpackPlugin(),
     
     new CleanWebpackPlugin(),
   ],
